@@ -232,16 +232,6 @@ module.exports = function(grunt) {
         src: mergeFilesFor('karmaModules-ngSanitize'),
         suffix: 'src/module.suffix'
       },
-      resource: {
-        dest: 'build/angular-resource.js',
-        src: util.wrap(files['angularModules']['ngResource'], 'module')
-      },
-      resourceModuleTestBundle: {
-        dest: 'build/test-bundles/angular-resource.js',
-        prefix: 'src/module.prefix',
-        src: mergeFilesFor('karmaModules-ngResource'),
-        suffix: 'src/module.suffix'
-      },
       messageformat: {
         dest: 'build/angular-message-format.js',
         src: util.wrap(files['angularModules']['ngMessageFormat'], 'module')
@@ -315,7 +305,7 @@ module.exports = function(grunt) {
       messageformat: 'build/angular-message-format.js',
       messages: 'build/angular-messages.js',
       touch: 'build/angular-touch.js',
-      resource: 'build/angular-resource.js',
+      //resource: 'build/angular-resource.js',
       route: 'build/angular-route.js',
       sanitize: 'build/angular-sanitize.js',
       aria: 'build/angular-aria.js',

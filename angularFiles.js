@@ -129,9 +129,6 @@ var angularFiles = {
       'src/ngParseExt/ucd.js',
       'src/ngParseExt/module.js'
     ],
-    'ngResource': [
-      'src/ngResource/resource.js'
-    ],
     'ngRoute': [
       'src/shallowCopy.js',
       'src/routeToRegExp.js',
@@ -167,7 +164,6 @@ var angularFiles = {
     'test/ngMessageFormat/*.js',
     'test/ngMessages/*.js',
     'test/ngCookies/*.js',
-    'test/ngResource/*.js',
     'test/ngRoute/**/*.js',
     'test/ngSanitize/**/*.js',
     'test/ngMock/*.js',
@@ -236,11 +232,6 @@ var angularFiles = {
     'test/ngMock/**/*.js'
   ],
 
-  'karmaModules-ngResource': [
-    '@angularSrcModuleNgResource',
-    'test/ngResource/**/*.js'
-  ],
-
   'karmaModules-ngRoute': [
     'build/angular-animate.js',
     '@angularSrcModuleNgRoute',
@@ -288,7 +279,6 @@ angularFiles['angularSrcModuleNgAria'] = angularFiles['angularModules']['ngAria'
 angularFiles['angularSrcModuleNgCookies'] = angularFiles['angularModules']['ngCookies'];
 angularFiles['angularSrcModuleNgMessageFormat'] = angularFiles['angularModules']['ngMessageFormat'];
 angularFiles['angularSrcModuleNgMessages'] = angularFiles['angularModules']['ngMessages'];
-angularFiles['angularSrcModuleNgResource'] = angularFiles['angularModules']['ngResource'];
 angularFiles['angularSrcModuleNgRoute'] = angularFiles['angularModules']['ngRoute'];
 angularFiles['angularSrcModuleNgSanitize'] = angularFiles['angularModules']['ngSanitize'];
 angularFiles['angularSrcModuleNgTouch'] = angularFiles['angularModules']['ngTouch'];
@@ -298,7 +288,6 @@ angularFiles['angularSrcModules'] = [].concat(
   angularFiles['angularModules']['ngMessageFormat'],
   angularFiles['angularModules']['ngMessages'],
   angularFiles['angularModules']['ngCookies'],
-  angularFiles['angularModules']['ngResource'],
   angularFiles['angularModules']['ngRoute'],
   angularFiles['angularModules']['ngSanitize'],
   angularFiles['angularModules']['ngMock'],

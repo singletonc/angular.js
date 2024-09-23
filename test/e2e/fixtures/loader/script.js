@@ -5,7 +5,6 @@ angular.
     'ngTouch',
     'ngSanitize',
     'ngRoute',
-    'ngResource',
     'ngParseExt',
     'ngMessages',
     'ngMessageFormat',
