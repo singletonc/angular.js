@@ -14,7 +14,7 @@ var semver = require('semver');
 var exec = require('shelljs').exec;
 var pkg = require(__dirname + '/package.json');
 
-var docsScriptFolder = util.docsScriptFolder;
+// var docsScriptFolder = util.docsScriptFolder;
 
 // Node.js version checks
 if (!semver.satisfies(process.version, pkg.engines.node)) {
@@ -168,7 +168,7 @@ module.exports = function(grunt) {
       deploy: [
         'deploy/docs',
         'deploy/code',
-        docsScriptFolder + '/functions/html'
+        // docsScriptFolder + '/functions/html'
       ]
     },
 
@@ -367,37 +367,37 @@ module.exports = function(grunt) {
           }
         ]
       },
-      deployFirebaseDocs: {
-        files: [
-          // The source files are needed by the embedded examples in the docs app.
-          {
-            src: ['build/angular*.{js,js.map,min.js}', 'build/sitemap.xml'],
-            dest: 'deploy/docs/',
-            expand: true,
-            flatten: true
-          },
-          {
-            cwd: 'build/docs',
-            src: ['**', '!ptore2e/**', '!index*.html'],
-            dest: 'deploy/docs/',
-            expand: true
-          },
-          {
-            src: 'build/docs/index-production.html',
-            dest: 'deploy/docs/index.html'
-          },
-          {
-            src: 'build/docs/index-production.html',
-            dest: docsScriptFolder + '/functions/content/index.html'
-          },
-          {
-            cwd: 'build/docs',
-            src: 'partials/**',
-            dest: docsScriptFolder + '/functions/content',
-            expand: true
-          }
-        ]
-      }
+      // deployFirebaseDocs: {
+      //   files: [
+      //     // The source files are needed by the embedded examples in the docs app.
+      //     {
+      //       src: ['build/angular*.{js,js.map,min.js}', 'build/sitemap.xml'],
+      //       dest: 'deploy/docs/',
+      //       expand: true,
+      //       flatten: true
+      //     },
+      //     {
+      //       cwd: 'build/docs',
+      //       src: ['**', '!ptore2e/**', '!index*.html'],
+      //       dest: 'deploy/docs/',
+      //       expand: true
+      //     },
+      //     {
+      //       src: 'build/docs/index-production.html',
+      //       dest: 'deploy/docs/index.html'
+      //     },
+      //     {
+      //       src: 'build/docs/index-production.html',
+      //       dest: docsScriptFolder + '/functions/content/index.html'
+      //     },
+      //     {
+      //       cwd: 'build/docs',
+      //       src: 'partials/**',
+      //       dest: docsScriptFolder + '/functions/content',
+      //       expand: true
+      //     }
+      //   ]
+      // }
     },
 
 
@@ -448,7 +448,7 @@ module.exports = function(grunt) {
     'package',
     'test:unit',
     'test:promises-aplus',
-    'tests:docs',
+    // 'tests:docs',
     'test:protractor'
   ]);
   grunt.registerTask('test:jqlite', 'Run the unit tests with Karma' , ['tests:jqlite']);
@@ -461,7 +461,7 @@ module.exports = function(grunt) {
     'tests:modules-ngAnimate',
     'tests:modules-ngMock'
   ]);
-  grunt.registerTask('test:docs', 'Run the doc-page tests with Karma', ['package', 'tests:docs']);
+  // grunt.registerTask('test:docs', 'Run the doc-page tests with Karma', ['package', 'tests:docs']);
   grunt.registerTask('test:unit', 'Run unit, jQuery and Karma module tests with Karma', [
     'test:jqlite',
     'test:jquery',
@@ -496,7 +496,7 @@ module.exports = function(grunt) {
     'minall',
     'collect-errors',
     'write',
-    'docs',
+    // 'docs',
     'copy:i18n',
     'compress:build'
   ]);
@@ -507,8 +507,8 @@ module.exports = function(grunt) {
   ]);
   grunt.registerTask('prepareDeploy', [
     'copy:deployFirebaseCode',
-    'firebaseDocsJsonForCI',
-    'copy:deployFirebaseDocs'
+    // 'firebaseDocsJsonForCI',
+    // 'copy:deployFirebaseDocs'
   ]);
   grunt.registerTask('default', ['package']);
 };
