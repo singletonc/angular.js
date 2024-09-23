@@ -1382,7 +1382,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
       Suffix = 'Directive',
       COMMENT_DIRECTIVE_REGEXP = /^\s*directive:\s*([\w-]+)\s+(.*)$/,
       CLASS_DIRECTIVE_REGEXP = /(([\w-]+)(?::([^;]+))?;?)/,
-      ALL_OR_NOTHING_ATTRS = makeMap('ngSrc,ngSrcset,src,srcset'),
+      ALL_OR_NOTHING_ATTRS = makeMap('ngSrc,src,srcset'), //REMOVED ngSrcset
       REQUIRE_PREFIX_REGEXP = /^(?:(\^\^?)?(\?)?(\^\^?)?)?/;
 
   // Ref: http://developers.whatwg.org/webappapis.html#event-handler-idl-attributes

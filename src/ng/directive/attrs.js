@@ -404,8 +404,9 @@ forEach(ALIASED_ATTR, function(htmlAttr, ngAttr) {
   };
 });
 
-// ng-src, ng-srcset, ng-href are interpolated
-forEach(['src', 'srcset', 'href'], function(attrName) {
+// ng-src, ng-href are interpolated
+// REMOVED ng-srcset
+forEach(['src', 'href'], function(attrName) {
   var normalized = directiveNormalize('ng-' + attrName);
   ngAttributeAliasDirectives[normalized] = ['$sce', function($sce) {
     return {
