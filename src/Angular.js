@@ -968,48 +968,52 @@ function copy(source, destination, maxDepth) {
   }
 
   function copyType(source) {
-    switch (toString.call(source)) {
-      case '[object Int8Array]':
-      case '[object Int16Array]':
-      case '[object Int32Array]':
-      case '[object Float32Array]':
-      case '[object Float64Array]':
-      case '[object Uint8Array]':
-      case '[object Uint8ClampedArray]':
-      case '[object Uint16Array]':
-      case '[object Uint32Array]':
-        return new source.constructor(copyElement(source.buffer), source.byteOffset, source.length);
+    return Object.assign({}, source); // https://stackoverflow.com/questions/34688517/whats-alternative-to-angular-copy-in-angular
+    //TODO Document changes and how this addresses REDOS. Does it? it handles the only regular expression I see in this set of functionality for case '[object RegExp]':
+    // we can also consider replacing the entry copy function entirely with lodash's cloneDeep. It doesn't have a maxDepth, however.
 
-      case '[object ArrayBuffer]':
-        // Support: IE10
-        if (!source.slice) {
-          // If we're in this case we know the environment supports ArrayBuffer
-          /* eslint-disable no-undef */
-          var copied = new ArrayBuffer(source.byteLength);
-          new Uint8Array(copied).set(new Uint8Array(source));
-          /* eslint-enable */
-          return copied;
-        }
-        return source.slice(0);
-
-      case '[object Boolean]':
-      case '[object Number]':
-      case '[object String]':
-      case '[object Date]':
-        return new source.constructor(source.valueOf());
-
-      case '[object RegExp]':
-        var re = new RegExp(source.source, source.toString().match(/[^/]*$/)[0]);
-        re.lastIndex = source.lastIndex;
-        return re;
-
-      case '[object Blob]':
-        return new source.constructor([source], {type: source.type});
-    }
-
-    if (isFunction(source.cloneNode)) {
-      return source.cloneNode(true);
-    }
+    // switch (toString.call(source)) {
+    //   case '[object Int8Array]':
+    //   case '[object Int16Array]':
+    //   case '[object Int32Array]':
+    //   case '[object Float32Array]':
+    //   case '[object Float64Array]':
+    //   case '[object Uint8Array]':
+    //   case '[object Uint8ClampedArray]':
+    //   case '[object Uint16Array]':
+    //   case '[object Uint32Array]':
+    //     return new source.constructor(copyElement(source.buffer), source.byteOffset, source.length);
+    //
+    //   case '[object ArrayBuffer]':
+    //     // Support: IE10
+    //     if (!source.slice) {
+    //       // If we're in this case we know the environment supports ArrayBuffer
+    //       /* eslint-disable no-undef */
+    //       var copied = new ArrayBuffer(source.byteLength);
+    //       new Uint8Array(copied).set(new Uint8Array(source));
+    //       /* eslint-enable */
+    //       return copied;
+    //     }
+    //     return source.slice(0);
+    //
+    //   case '[object Boolean]':
+    //   case '[object Number]':
+    //   case '[object String]':
+    //   case '[object Date]':
+    //     return new source.constructor(source.valueOf());
+    //
+    //   case '[object RegExp]':
+    //     var re = _.cloneDeep(source); //new RegExp(source.source, source.toString().match(/[^/]*$/)[0]);
+    //     re.lastIndex = source.lastIndex;
+    //     return re;
+    //
+    //   case '[object Blob]':
+    //     return new source.constructor([source], {type: source.type});
+    // }
+    //
+    // if (isFunction(source.cloneNode)) {
+    //   return source.cloneNode(true);
+    // }
   }
 }
 
